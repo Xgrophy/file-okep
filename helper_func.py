@@ -4,25 +4,25 @@ import base64
 import re
 import asyncio
 from pyrogram import filters
-from config import FORCE_SUB_CHANNEL, ADMINS
+from config import FORCE_SUB_CHANNEL1, FORCE_SUB_CHANNEL2, ADMINS
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
 async def is_subscribed(filter, client, update):
-    if not FORCE_SUB_CHANNEL:
+    if not FORCE_SUB_CHANNEL1:
+        return True
+    if not FORCE_SUB_CHANNEL2:
         return True
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
     try:
-        member = await client.get_chat_member(chat_id = FORCE_SUB_CHANNEL, user_id = user_id)
+        member = await client.get_chat_member(chat_id=FORCE_SUB_CHANNEL1, user_id=user_id)
+        member = await client.get_chat_member(chat_id=FORCE_SUB_CHANNEL2, user_id=user_id)
     except UserNotParticipant:
         return False
 
-    if not member.status in ["creator", "administrator", "member"]:
-        return False
-    else:
-        return True
+    return member.status in ["creator", "administrator", "member"]
 
 async def encode(string):
     string_bytes = string.encode("ascii")
@@ -77,10 +77,7 @@ async def get_message_id(client, message):
         if channel_id.isdigit():
             if f"-100{channel_id}" == str(client.db_channel.id):
                 return msg_id
-        else:
-            if channel_id == client.db_channel.username:
-                return msg_id
-    else:
-        return 0
+        elif channel_id == client.db_channel.username:
+            return msg_id
 
 subscribed = filters.create(is_subscribed)
