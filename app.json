@@ -1,13 +1,13 @@
 {
-  "name": "TG File Share/Sharing Bot",
+  "name": "File Sharing Bot",
   "description": "file sharing bot store posts and it can access by special links",
   "keywords": [
     "telegram",
     "file",
     "sharing"
   ],
-  "repository": "https://github.com/CodeXBotz/File-Sharing-Bot",
-  "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
+  "repository": "https://github.com/Xgrophy/file-okep",
+  "logo": "https://telegra.ph/file/149d3ff87d0e68e8a1b7f.jpg",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Your Bot token, Get it from @Botfather",
@@ -15,7 +15,7 @@
     },
     "OWNER_ID": {
       "description": "An integer of consisting of your owner ID",
-      "value": "1250450587"
+      "value": "2010825200"
     },
     "APP_ID":{
       "description": "your app id, take it from my.telegram.org",
@@ -29,26 +29,25 @@
       "description": "make a channel (database channel), then make the bot as admin in channel, and it's id",
       "value": "-100"
     },
-    "FORCE_SUB_CHANNEL":{
+    "FORCE_SUB_CHANNEL1":{
+      "description": "id of the channel or group, if you want enable force sub feature else put 0",
+      "value": "0"
+    },
+    "FORCE_SUB_CHANNEL2":{
       "description": "id of the channel or group, if you want enable force sub feature else put 0",
       "value": "0"
     },
     "START_MESSAGE": {
       "description": "Optional: start message of bot, use HTML parsemode format",
-      "value": "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link."
+      "value": "Hello {first}\n\nSaya dapat menyimpan file pribadi di Saluran Tertentu dan pengguna lain dapat mengaksesnya dari tautan khusus.."
     },
     "FORCE_SUB_MESSAGE": {
       "description": "Optional: Force Sub message of bot, use HTML parsemode format",
-      "value": "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
+      "value": "Hello {first}\n\n<b>Tekan Tombol Dibawah Ini Lalu Join\n\nSelamat Menonton</b>"
     },
     "ADMINS": {
       "description": "A space separated list of user_ids of Admins, they can only create links",
       "value": "",
-      "required": false
-    },
-    "PROTECT_CONTENT": {
-      "description": "Protect contents from getting forwarded",
-      "value": "False",
       "required": false
     }
   },
@@ -72,4 +71,3 @@
     }
   }
 }
-
